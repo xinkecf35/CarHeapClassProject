@@ -8,7 +8,6 @@ public class Car {
     private double price;
     private int mileage;
 
-
     public Car(String VIN,
                String make,
                String model,
@@ -59,7 +58,6 @@ public class Car {
 
     @Override
     public int hashCode() {
-
         return Objects.hash(VIN, make, model);
     }
 }
