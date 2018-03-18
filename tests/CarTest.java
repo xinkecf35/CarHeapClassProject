@@ -2,6 +2,8 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.Comparator;
+
 import static org.junit.Assert.*;
 
 public class CarTest {
@@ -59,5 +61,22 @@ public class CarTest {
     public void testToString() {
         System.err.println(car1.toString());
         System.err.println(car2.toString());
+    }
+
+    @Test
+    public void testComparatorPrice() {
+        Comparator<Car> comparator = Car.priceComparator();
+        assertTrue(comparator.compare(car1,car2) < 0);
+        assertTrue(comparator.compare(car2,car1) > 0);
+        car1.setPrice(car2.getPrice());
+        assertTrue(comparator.compare(car1,car2) == 0);
+    }
+    @Test
+    public void  testComparatorMileage() {
+        Comparator<Car> comparator = Car.mileageComparator();
+        assertTrue(comparator.compare(car1,car2) < 0);
+        assertTrue(comparator.compare(car2,car1) > 0);
+        car1.setMileage(car2.getMileage());
+        assertTrue(comparator.compare(car1,car2) == 0);
     }
 }

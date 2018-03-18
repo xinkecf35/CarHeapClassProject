@@ -107,20 +107,24 @@ public class Car {
     }
 
     /**
-     * Comparator Classes
+     * Comparator
      */
 
-    public class CartSortByPrice implements Comparator<Car> {
-        @Override
-        public int compare(Car o1, Car o2) {
-            return Double.compare(o1.getPrice(), o2.getPrice());
-        }
+    public static Comparator<Car> priceComparator() {
+        return new Comparator<Car>() {
+            @Override
+            public int compare(Car o1, Car o2) {
+                return Double.compare(o1.getPrice(), o2.getPrice());
+            }
+        };
     }
 
-    public class CarSortByMileage implements Comparator<Car> {
-        @Override
-        public int compare(Car o1, Car o2) {
-            return o2.getMileage()-o1.getMileage();
-        }
+    public static Comparator<Car> mileageComparator() {
+        return new Comparator<Car>() {
+            @Override
+            public int compare(Car o1, Car o2) {
+                return o1.getMileage()-o2.getMileage();
+            }
+        };
     }
 }
