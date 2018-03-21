@@ -65,6 +65,27 @@ public class CarIndexableMinHeap {
         if(lastIndex == -1) return null;
         return heap[0];
     }
+
+    /**
+     * Removes the minimum element of the heap as defined by the comparator
+     * May return null if there is nothing in the heap
+     * @return Car object that was minimum of heap
+     */
+    public Car removeMin() {
+        if(heap[0] == null) return null;
+        indirectionTable.remove(heap[0].getVIN());
+        Car removed = heap[0];
+        swap(0,lastIndex--);
+        size--;
+        heapUp();
+        return removed;
+    }
+    /**
+     * Returns Car object associated with
+     */
+    public Car get(String VIN) {
+        return heap[indirectionTable.get(VIN)];
+    }
     /**
      * Removes a Car from the heap
      * Lookup Car based on VIN and removes the corresponding car
@@ -74,6 +95,7 @@ public class CarIndexableMinHeap {
         if(remove == null) return null;
         Car removed = heap[remove];
         swap(remove, lastIndex--);
+        size--;
         heapUp();
         return removed;
     }
