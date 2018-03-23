@@ -94,7 +94,7 @@ public class Car {
     public String toString() {
        StringBuilder sb = new StringBuilder();
        sb.append("{\n");
-       sb.append(String.format("\tReference:\t%d\n",System.identityHashCode(this)));
+       //sb.append(String.format("\tReference:\t%d\n",System.identityHashCode(this)));
        sb.append(String.format("\tVIN:\t\t%s,\n",VIN));
        sb.append(String.format("\tMake:\t\t%s,\n",make));
        sb.append(String.format("\tModel:\t\t%s,\n",model));

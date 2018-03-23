@@ -105,7 +105,7 @@ public class CarIndexableMinHeap {
         Car removed = heap[remove];
         swap(remove, lastIndex--);
         size--;
-        heapUp();
+        heapDown();
         return removed;
     }
 
@@ -133,6 +133,23 @@ public class CarIndexableMinHeap {
                 swap(parentIndex, current);
             }
             current = parentIndex;
+        }
+    }
+
+    private void heapDown() {
+        int current = 0;
+        while (current < lastIndex) {
+            int minChild = getMinChildIndex(current);
+            if(minChild > -1) {
+                Car parent = heap[current];
+                Car child = heap[minChild];
+                if (comparator.compare(parent,child) > 0) {
+                    swap(current, minChild);
+                }
+            } else {
+                break;
+            }
+            current = minChild;
         }
     }
 
@@ -171,6 +188,19 @@ public class CarIndexableMinHeap {
     }
     private int rightChildOf(int i) {
         return 2*i + 2;
+    }
+    private int getMinChildIndex(int i) {
+        int left = leftChildOf(i);
+        if(left >= lastIndex) {
+            return -1;
+        } else {
+            int right = rightChildOf(i);
+            if(right >= lastIndex || comparator.compare(heap[right], heap[left]) > 0) {
+                return left;
+            } else {
+                return right;
+            }
+        }
     }
 
 }

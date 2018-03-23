@@ -108,6 +108,23 @@ public class CarTrackerDataStack {
     }
 
     /**
+     * Returns a Car for a given VIN or null if not in data stack
+     * @param VIN
+     * @return a Car object for that VIN or null
+     */
+    public Car getCar(String VIN) {
+        return overallPriceHeap.get(VIN);
+    }
+
+    /**
+     * Returns the number of cars in the data stack
+     * @return number of cars
+     */
+    public int getSize() {
+        return overallMileageHeap.getSize();
+    }
+
+    /**
      * Get the lowest price car from the data stack
      * @return return lowest priced Car object
      */
