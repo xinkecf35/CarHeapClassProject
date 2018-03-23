@@ -9,10 +9,7 @@ public class Car {
     private double price;
     private int mileage;
 
-    /**
-     * Do not use
-     */
-    public Car() {
+    private Car() {
 
     }
 
@@ -82,12 +79,15 @@ public class Car {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Car car = (Car) o;
-        return Objects.equals(VIN, car.VIN);
+        return Objects.equals(VIN, car.VIN) &&
+                Objects.equals(make, car.make) &&
+                Objects.equals(model, car.model);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(VIN);
+
+        return Objects.hash(VIN, make, model);
     }
 
     @Override

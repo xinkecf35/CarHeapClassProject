@@ -81,7 +81,7 @@ public class CarIndexableMinHeap {
         return removed;
     }
     /**
-     * Returns Car object associated with
+     * Returns Car object associated with a VIN
      */
     public Car get(String VIN) {
         return heap[indirectionTable.get(VIN)];
