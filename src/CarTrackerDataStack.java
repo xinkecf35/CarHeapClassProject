@@ -99,8 +99,56 @@ public class CarTrackerDataStack {
      * @return the car object removed or null if not in data stack
      */
     public Car remove(String VIN) {
+        Car remove = overallPriceHeap.remove(VIN);
+        if(remove == null) return null;
+        overallMileageHeap.remove(VIN);
+        String makeModel = remove.getMake()+remove.getModel();
+        priceMakeModelHeaps.get(makeModel).remove(VIN);
+        mileageMakeModeHeaps.get(makeModel).remove(VIN);
+        return remove;
+    }
+
+    /**
+     * Get the lowest price car from the data stack
+     * @return return lowest priced Car object
+     */
+    public Car getOverallPriceMin() {
+        return overallPriceHeap.getMin();
+    }
+
+    /**
+     * Get the lowest mileage car from the data stack
+     * @return return lowest mileage Car object
+     */
+    public Car getOverallMileageMin() {
+        return overallMileageHeap.getMin();
+    }
+
+    /**
+     * Get the lowest price car for the make and model or null if the make and model
+     * is not in the data stack
+     * @param make
+     * @param model
+     * @return return lowest priced Car object for make and model
+     */
+    public Car getMakeModelPriceMin(String make, String model) {
+        String makeModel = make+model;
+        CarIndexableMinHeap heap = priceMakeModelHeaps.get(makeModel);
+        if(heap != null) {
+            return heap.getMin();
+        }
         return null;
     }
+
+    public Car getMakeModelMileageMin(String make, String model) {
+        String makeModel = make+model;
+        CarIndexableMinHeap heap = mileageMakeModeHeaps.get(makeModel);
+        if(heap != null) {
+            return heap.getMin();
+        }
+        return null;
+    }
+
     /*
      * Helper function to turn Car From String array
      * Expects array to have the following order:

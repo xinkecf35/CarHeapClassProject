@@ -81,6 +81,12 @@ public class CarIndexableMinHeap {
         return removed;
     }
 
+    /**
+     * Removes a Car object from the heap using its VIN
+     * Return null if the Car is not in the object
+     * @param VIN
+     * @return a Car object that corresponds to the VIN or null if not in the heap
+     */
     public Car get(String VIN) {
         Integer index = indirectionTable.get(VIN);
         if(index != null) {
