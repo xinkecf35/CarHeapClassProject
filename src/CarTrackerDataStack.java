@@ -92,7 +92,13 @@ public class CarTrackerDataStack {
 
         }
     }
-    public Car remove() {
+
+    /**
+     * Removes a car from the data stack using its VIN
+     * @param VIN
+     * @return the car object removed or null if not in data stack
+     */
+    public Car remove(String VIN) {
         return null;
     }
     /*

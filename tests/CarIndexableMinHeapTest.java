@@ -135,5 +135,6 @@ public class CarIndexableMinHeapTest {
         car_get = priceHeap.get(VIN5);
         assertNotNull(car_get);
         assertTrue(car5.equals(car_get));
+        assertNull(priceHeap.get("1111111111"));
     }
 }

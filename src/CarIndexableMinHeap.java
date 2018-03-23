@@ -80,11 +80,14 @@ public class CarIndexableMinHeap {
         heapUp();
         return removed;
     }
-    /**
-     * Returns Car object associated with a VIN
-     */
+
     public Car get(String VIN) {
-        return heap[indirectionTable.get(VIN)];
+        Integer index = indirectionTable.get(VIN);
+        if(index != null) {
+            return heap[index];
+        } else {
+            return null;
+        }
     }
     /**
      * Removes a Car from the heap
