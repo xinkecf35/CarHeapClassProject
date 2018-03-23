@@ -44,8 +44,8 @@ public class CarTrackerDataStack {
 
             String currentLine;
             while((currentLine = bufferedReader.readLine()) != null) {
-                if(currentLine.charAt(0) == '#') {
-                    //Skip any lines with # out front
+                if(currentLine.trim().length() == 0 || currentLine.charAt(0) == '#') {
+                    //Skip any lines with # out front or blank lines
                     continue;
                 }
                 Car current = carFromArray(currentLine.split(":"));
@@ -88,8 +88,7 @@ public class CarTrackerDataStack {
         } else {
             mileageMakeModelHeap = new CarIndexableMinHeap(11, Car.mileageComparator());
             mileageMakeModelHeap.add(car);
-            priceMakeModelHeaps.put(makeModel, mileageMakeModelHeap);
-
+            mileageMakeModeHeaps.put(makeModel, mileageMakeModelHeap);
         }
     }
 
