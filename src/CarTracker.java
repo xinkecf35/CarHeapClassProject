@@ -1,6 +1,21 @@
 import java.util.Scanner;
 
 public class CarTracker {
+    public static Car createCarFromUser(Scanner scanner) {
+        System.out.println("Please enter the VIN");
+        String VIN = scanner.next().trim();
+        System.out.println("Please enter the make");
+        String make = scanner.next().trim();
+        System.out.println("Please enter the model");
+        String model = scanner.next().trim();
+        System.out.println("Please enter the color");
+        String color = scanner.next().trim();
+        System.out.println("Please enter the price");
+        double price = Double.parseDouble(scanner.next());
+        System.out.println("Please enter the mileage");
+        int mileage = Integer.parseInt(scanner.next());
+        return new Car(VIN, make, model, color, price, mileage);
+    }
 
     public static String[] getMakeModelFromUser(Scanner scanner) {
         String[] items = new String[2];
@@ -122,7 +137,9 @@ public class CarTracker {
                     }
                     break;
                 case 7:
-                    // add car option here
+                    car = createCarFromUser(scanner);
+                    dataStack.puts(car);
+                    System.out.println("Added car " + car.toString());
                     break;
                 case 0:
                     System.out.println("Goodbye!");
